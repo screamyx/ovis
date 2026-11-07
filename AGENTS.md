@@ -34,3 +34,9 @@ to change. Also read [server/AGENTS.md](server/AGENTS.md) and [src/AGENTS.md](sr
 - Theme colors are edited only in the theme blocks of `src/styles.css`. Never edit
   `src/lib/themes.generated.ts` or the generated copies in DESIGN.md, index.html and
   `public/manifest.webmanifest`; run `bun run generate:themes`.
+
+## Tests
+- Tests never touch the user's herdr session or real state: they use the isolated test session,
+  a `mkdtempSync` `stateDir` and `port: 0` for every `createServer`. Never run the real
+  `herdr update` in a test.
+- Screenshots and recordings come from the demo or a test session, never the user's live one.
